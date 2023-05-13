@@ -1,4 +1,3 @@
-
 import 'package:extra_edge_t/http_call/repository.dart';
 import 'package:get/get.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -13,13 +12,13 @@ class RocketController extends GetxController {
   bool isDetailsLoading = true;
   bool isReadMore = true;
 
-
   @override
   void onInit() {
     getRocketList();
     super.onInit();
   }
 
+  /// function to get data from get rocket list api
   void getRocketList() async {
     try {
       await repository.getRocketList().then((value) {
@@ -32,6 +31,7 @@ class RocketController extends GetxController {
     }
   }
 
+  /// api to get rocket list details api
   void getRocketListDetails({
     required String id,
   }) async {
@@ -46,10 +46,9 @@ class RocketController extends GetxController {
     }
   }
 
-
+  /// function to launch/redirect to url
   void launchUrlCall(Uri url) async {
-    var url =
-        'https://api.flutter.dev/flutter/material/Icons-class.html';
+    var url = 'https://api.flutter.dev/flutter/material/Icons-class.html';
     final uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);
