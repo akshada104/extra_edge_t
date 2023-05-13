@@ -11,6 +11,8 @@ class RocketController extends GetxController {
   Map<String, dynamic> rocketListDetailsData = {};
   bool isLoading = true;
   bool isDetailsLoading = true;
+  bool isReadMore = true;
+
 
   @override
   void onInit() {
@@ -44,9 +46,15 @@ class RocketController extends GetxController {
     }
   }
 
-  void launchUrl(Uri url) async {
-    if (await canLaunchUrl(url)) {
-      launchUrl(url);
+
+  void launchUrlCall(Uri url) async {
+    var url =
+        'https://api.flutter.dev/flutter/material/Icons-class.html';
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      throw 'Could not launch $url';
     }
   }
 }

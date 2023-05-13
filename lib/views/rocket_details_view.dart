@@ -3,6 +3,7 @@ import 'package:extra_edge_t/http_call/get_rocket_list_controller.dart';
 import 'package:extra_edge_t/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class RocketDetailsView extends StatelessWidget {
   const RocketDetailsView({super.key});
@@ -268,7 +269,9 @@ class RocketDetailsView extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          height: Get.height * 0.3,
+                          height: !controller.isReadMore
+                              ? Get.height * 0.25
+                              : Get.height * 0.35,
                           width: Get.width,
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -298,15 +301,13 @@ class RocketDetailsView extends StatelessWidget {
                                         ),
                                         const Spacer(),
                                         InkWell(
-                                          onTap: () async {
-                                            controller.launchUrl(Uri.parse(
-                                                controller
+                                          onTap: () {
+                                            controller.launchUrlCall(controller
                                                     .rocketListDetailsData[
-                                                        'wikipedia']
-                                                    .toString()));
+                                                'wikipedia']);
                                           },
                                           child: const Icon(
-                                            Icons.more_horiz_outlined,
+                                            Icons.link,
                                             size: 20,
                                           ),
                                         )
@@ -315,15 +316,41 @@ class RocketDetailsView extends StatelessWidget {
                                     SizedBox(
                                       height: Get.height * 0.015,
                                     ),
-                                    Text(
-                                      '${controller.rocketListDetailsData['description']}',
-                                      textAlign: TextAlign.start,
-                                      style: const TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold,
-                                        color: primaryGreyColor,
-                                      ),
-                                    )
+                                    Wrap(
+                                      children: [
+                                        Text(
+                                          controller.rocketListDetailsData[
+                                              'description'],
+                                          style: const TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.bold,
+                                            color: primaryGreyColor,
+                                          ),
+                                          maxLines:
+                                              controller.isReadMore ? 10 : 4,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                        Container(
+                                          alignment: Alignment.bottomRight,
+                                          padding: EdgeInsets.all(6),
+                                          child: GestureDetector(
+                                            child: Text(
+                                              controller.isReadMore
+                                                  ? "Read less"
+                                                  : "Read more",
+                                              style:
+                                                  TextStyle(color: Colors.blue),
+                                            ),
+                                            onTap: () {
+                                              controller.isReadMore =
+                                                  !controller.isReadMore;
+                                              controller.update(
+                                                  ['rocket-list-details']);
+                                            },
+                                          ),
+                                        ),
+                                      ],
+                                    ),
                                   ],
                                 ),
                               ),
