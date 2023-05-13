@@ -9,6 +9,8 @@ import 'rocket_details_view.dart';
 class RocketListView extends StatelessWidget {
   var controller = RocketController();
 
+  RocketListView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,7 +23,6 @@ class RocketListView extends StatelessWidget {
             init: RocketController(),
             id: 'rocket-list',
             builder: (controller) {
-
               return controller.isLoading
                   ? const Center(
                       child: CircularProgressIndicator(),
@@ -32,9 +33,9 @@ class RocketListView extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: () {
-                            controller.getRocketListDetails(id:controller.rocketList[index]['id'] );
-                            print(controller.rocketList[index]['id']);
-                            Get.to(() => RocketDetailsView(),
+                            controller.getRocketListDetails(
+                                id: controller.rocketList[index]['id']);
+                            Get.to(() => const RocketDetailsView(),
                                 arguments: {
                                   "id": controller.rocketList[index]['id'],
                                 },

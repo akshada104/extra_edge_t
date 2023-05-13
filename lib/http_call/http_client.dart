@@ -44,13 +44,9 @@ class HttpClient {
     };
   }
 
-  // ignore: constant_identifier_names
-  static String TOKEN = '';
-
   Future<Map<String, String>> _getHeaders() async {
     return {
       'Content-type': 'application/json',
-      'Authorization': 'Bearer $TOKEN',
     };
   }
 }

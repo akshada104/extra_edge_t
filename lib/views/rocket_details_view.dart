@@ -3,9 +3,10 @@ import 'package:extra_edge_t/http_call/get_rocket_list_controller.dart';
 import 'package:extra_edge_t/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class RocketDetailsView extends StatelessWidget {
+  const RocketDetailsView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

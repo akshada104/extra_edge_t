@@ -1,4 +1,3 @@
-import 'dart:convert';
 
 import 'package:extra_edge_t/http_call/repository.dart';
 import 'package:get/get.dart';
@@ -20,21 +19,29 @@ class RocketController extends GetxController {
   }
 
   void getRocketList() async {
-    await repository.getRocketList().then((value) {
-      rocketList = value;
-    });
-    update(['rocket-list']);
-    isLoading = false;
+    try {
+      await repository.getRocketList().then((value) {
+        rocketList = value;
+      });
+      update(['rocket-list']);
+      isLoading = false;
+    } catch (e) {
+      print('error caught: $e');
+    }
   }
 
   void getRocketListDetails({
     required String id,
   }) async {
-    await repository.getRocketListDetails(id: id).then((value) {
-      rocketListDetailsData = value;
-    });
-    update(['rocket-list-details']);
-    isDetailsLoading = false;
+    try {
+      await repository.getRocketListDetails(id: id).then((value) {
+        rocketListDetailsData = value;
+      });
+      update(['rocket-list-details']);
+      isDetailsLoading = false;
+    } catch (e) {
+      print('error caught: $e');
+    }
   }
 
   void launchUrl(Uri url) async {

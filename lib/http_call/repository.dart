@@ -25,7 +25,6 @@ class Repository {
         serverUrl: 'https://api.spacexdata.com/v4/rockets/$id');
     var body = json.decode(response['body']);
 
-    print('list $body');
     return body;
   }
 }
