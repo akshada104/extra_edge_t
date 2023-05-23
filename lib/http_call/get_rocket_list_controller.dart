@@ -35,6 +35,7 @@ class RocketController extends ChangeNotifier{
       await repository.getRocketList().then((value) {
         rocketList = value;
       });
+      notifyListeners();
       isLoading = false;
     } catch (e) {
       debugPrint('error caught: $e');

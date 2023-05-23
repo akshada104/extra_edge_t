@@ -10,7 +10,6 @@ class RocketDetailsView extends StatefulWidget {
 
   Map<String, dynamic>? rocketListDetailsData;
 
-
   @override
   State<RocketDetailsView> createState() => _RocketDetailsViewState();
 }
@@ -33,7 +32,9 @@ class _RocketDetailsViewState extends State<RocketDetailsView> {
         appBar: AppBar(
           leading: IconButton(
             icon: const Icon(Icons.arrow_back_ios),
-            onPressed: Get.back,
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
           ),
           title: const Text('SpaceX Rockets'),
         ),
@@ -125,8 +126,8 @@ class _RocketDetailsViewState extends State<RocketDetailsView> {
                 height: Get.height * 0.28,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: widget
-                        .rocketListDetailsData!['flickr_images'].length,
+                    itemCount:
+                        widget.rocketListDetailsData!['flickr_images'].length,
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return Container(
