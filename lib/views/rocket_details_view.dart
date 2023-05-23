@@ -2,8 +2,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:extra_edge_t/http_call/get_rocket_list_controller.dart';
 import 'package:extra_edge_t/utils/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:get/get.dart';
 
 class RocketDetailsView extends StatefulWidget {
   RocketDetailsView({super.key, this.rocketListDetailsData});
@@ -16,12 +14,6 @@ class RocketDetailsView extends StatefulWidget {
 
 class _RocketDetailsViewState extends State<RocketDetailsView> {
   var controller = RocketController();
-
-  @override
-  void initState() {
-    super.initState();
-    print('${widget.rocketListDetailsData!['name']}');
-  }
 
   @override
   Widget build(
@@ -44,11 +36,11 @@ class _RocketDetailsViewState extends State<RocketDetailsView> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
-                height: Get.height * 0.01,
+                height: MediaQuery.of(context).size.height * 0.01,
               ),
               SizedBox(
-                height: Get.height * 0.12,
-                width: Get.width,
+                height: MediaQuery.of(context).size.height * 0.12,
+                width: MediaQuery.of(context).size.width,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Card(
@@ -123,7 +115,7 @@ class _RocketDetailsViewState extends State<RocketDetailsView> {
                 ),
               ),
               SizedBox(
-                height: Get.height * 0.28,
+                height: MediaQuery.of(context).size.height * 0.28,
                 child: ListView.builder(
                     scrollDirection: Axis.horizontal,
                     itemCount:
@@ -164,11 +156,11 @@ class _RocketDetailsViewState extends State<RocketDetailsView> {
                     }),
               ),
               SizedBox(
-                height: Get.height * 0.01,
+                height: MediaQuery.of(context).size.height * 0.01,
               ),
               SizedBox(
-                height: Get.height * 0.15,
-                width: Get.width,
+                height: MediaQuery.of(context).size.height * 0.15,
+                width: MediaQuery.of(context).size.width,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Card(
@@ -197,7 +189,7 @@ class _RocketDetailsViewState extends State<RocketDetailsView> {
                             ],
                           ),
                           SizedBox(
-                            height: Get.height * 0.015,
+                            height: MediaQuery.of(context).size.height * 0.015,
                           ),
                           Text(
                             '${widget.rocketListDetailsData!['cost_per_launch']}',
@@ -215,8 +207,8 @@ class _RocketDetailsViewState extends State<RocketDetailsView> {
                 ),
               ),
               SizedBox(
-                height: Get.height * 0.15,
-                width: Get.width,
+                height: MediaQuery.of(context).size.height * 0.15,
+                width: MediaQuery.of(context).size.width,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Card(
@@ -245,7 +237,7 @@ class _RocketDetailsViewState extends State<RocketDetailsView> {
                             ],
                           ),
                           SizedBox(
-                            height: Get.height * 0.015,
+                            height: MediaQuery.of(context).size.height * 0.015,
                           ),
                           Text(
                             '${widget.rocketListDetailsData!['success_rate_pct']} %',
@@ -264,9 +256,9 @@ class _RocketDetailsViewState extends State<RocketDetailsView> {
               ),
               SizedBox(
                 height: !controller.isReadMore
-                    ? Get.height * 0.25
-                    : Get.height * 0.35,
-                width: Get.width,
+                    ? MediaQuery.of(context).size.height * 0.25
+                    : MediaQuery.of(context).size.height * 0.35,
+                width: MediaQuery.of(context).size.width,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Card(
@@ -306,7 +298,7 @@ class _RocketDetailsViewState extends State<RocketDetailsView> {
                             ],
                           ),
                           SizedBox(
-                            height: Get.height * 0.015,
+                            height: MediaQuery.of(context).size.height * 0.015,
                           ),
                           Wrap(
                             children: [
@@ -347,8 +339,8 @@ class _RocketDetailsViewState extends State<RocketDetailsView> {
                 ),
               ),
               SizedBox(
-                height: Get.height * 0.15,
-                width: Get.width,
+                height: MediaQuery.of(context).size.height * 0.15,
+                width: MediaQuery.of(context).size.width,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Card(
@@ -365,7 +357,7 @@ class _RocketDetailsViewState extends State<RocketDetailsView> {
                           Row(
                             children: [
                               SizedBox(
-                                width: Get.width * 0.3,
+                                width: MediaQuery.of(context).size.width * 0.3,
                                 child: const Text(
                                   'Height ',
                                   textAlign: TextAlign.start,
@@ -389,12 +381,12 @@ class _RocketDetailsViewState extends State<RocketDetailsView> {
                             ],
                           ),
                           SizedBox(
-                            height: Get.height * 0.015,
+                            height: MediaQuery.of(context).size.height * 0.015,
                           ),
                           Row(
                             children: [
                               SizedBox(
-                                width: Get.width * 0.3,
+                                width: MediaQuery.of(context).size.width * 0.3,
                                 child: const Text(
                                   'Diameter ',
                                   textAlign: TextAlign.start,
