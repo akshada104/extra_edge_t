@@ -19,7 +19,7 @@ class _RocketListViewState extends ConsumerState {
   @override
   void initState() {
     super.initState();
-    ref.read(rocketProvider).getRocketList(context);
+    ref.read(rocketProvider.notifier).getRocketList(context);
   }
 
   @override
