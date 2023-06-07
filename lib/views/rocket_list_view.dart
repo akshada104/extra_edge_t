@@ -13,12 +13,10 @@ class RocketListView extends ConsumerStatefulWidget {
 }
 
 class _RocketListViewState extends ConsumerState {
-  var controller = RocketController();
-
   @override
   void initState() {
     super.initState();
-    ref.read(rocketProvider.notifier).getRocketList(context);
+    ref.read(rocketProvider).getRocketList();
   }
 
   @override
@@ -41,7 +39,6 @@ class _RocketListViewState extends ConsumerState {
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () async {
-
                         Navigator.push(
                             context,
                             MaterialPageRoute(

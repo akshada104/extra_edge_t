@@ -23,7 +23,7 @@ class RocketController extends ChangeNotifier {
   // }
 
   /// function to get data from get rocket list api
-  getRocketList(BuildContext context) async {
+  getRocketList() async {
     try {
       await repository.getRocketList().then((value) {
         rocketList = value;
@@ -37,7 +37,7 @@ class RocketController extends ChangeNotifier {
 
   /// function to launch/redirect to url
   void launchUrlCall(Uri url) async {
-    var url = 'https://api.flutter.dev/flutter/material/Icons-class.html';
+    var url = '';
     final uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
       await launchUrl(uri);

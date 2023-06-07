@@ -255,9 +255,7 @@ class _RocketDetailsViewState extends State<RocketDetailsView> {
                 ),
               ),
               SizedBox(
-                height: !controller.isReadMore
-                    ? MediaQuery.of(context).size.height * 0.25
-                    : MediaQuery.of(context).size.height * 0.35,
+                // height:  MediaQuery.of(context).size.height * 0.37,
                 width: MediaQuery.of(context).size.width,
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -300,37 +298,14 @@ class _RocketDetailsViewState extends State<RocketDetailsView> {
                           SizedBox(
                             height: MediaQuery.of(context).size.height * 0.015,
                           ),
-                          Wrap(
-                            children: [
-                              Text(
-                                widget.rocketListDetailsData!['description'],
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
-                                  color: primaryGreyColor,
-                                ),
-                                maxLines: controller.isReadMore ? 10 : 4,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              Container(
-                                alignment: Alignment.bottomRight,
-                                padding: const EdgeInsets.all(6),
-                                child: GestureDetector(
-                                  child: Text(
-                                    controller.isReadMore
-                                        ? "Read less"
-                                        : "Read more",
-                                    style: const TextStyle(color: Colors.blue),
-                                  ),
-                                  onTap: () {
-                                    controller.isReadMore =
-                                        !controller.isReadMore;
-                                    // controller
-                                    //     .update(['rocket-list-details']);
-                                  },
-                                ),
-                              ),
-                            ],
+                          Text(
+                            widget.rocketListDetailsData!['description'],
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                              color: primaryGreyColor,
+                            ),
+                            softWrap: true,
                           ),
                         ],
                       ),
